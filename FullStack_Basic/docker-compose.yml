@@ -1,0 +1,49 @@
+# version: '3'
+# services:
+#   server:
+#     build: .
+#     restart: always
+#     expose:
+#       - 8000
+#     ports:
+#       - 8000:8000
+#     depends_on:
+#       - mongo
+#     command: node index.js
+
+#   mongo:
+#     image: mongo
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - ../../mongo_data:/data/db
+
+version: '3'
+services:
+  server:
+    build: .
+    restart: always
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo
+      - postgres
+    command: node index.js
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ../../mongo_data:/data/db
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: dish_detail
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: hp1234
