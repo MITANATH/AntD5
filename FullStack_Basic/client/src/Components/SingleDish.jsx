@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BASE_URL } from "../Config"
+
 
 const SingleDish = () => {
   const [selectedDish, setSelectedDish] = useState('');
@@ -7,7 +9,7 @@ const SingleDish = () => {
   const [dishes, setDishes] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/dishes')
+    axios.get(`${BASE_URL}/dishes`)
       .then((response) => {
         setDishes(response.data);
       })
@@ -21,7 +23,7 @@ const SingleDish = () => {
   };
 
   const getSingleDish = () => {
-    axios.get(`http://localhost:8000/dishes/${selectedDish}`)
+    axios.get(`${BASE_URL}/dishes/${selectedDish}`)
       .then((response) => {
         setSingleDish(response.data);
       })

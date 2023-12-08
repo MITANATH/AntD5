@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BASE_URL } from "../Config"
 import axios from 'axios';
 
 const Ingredients = () => {
@@ -8,7 +9,7 @@ const Ingredients = () => {
 
   useEffect(() => {
     // Fetch all ingredients
-    axios.get('http://localhost:8000/ingredients')
+    axios.get(`${BASE_URL}/ingredients`)
       .then((response) => {
         // Handle data (list of ingredients)
         setAllIngredients(response.data.ingredients);
@@ -22,7 +23,7 @@ const Ingredients = () => {
   useEffect(() => {
     if (selectedIngredient !== '') {
       // Fetch dishes for the selected ingredient
-      axios.get(`http://localhost:8000/ingredients/${selectedIngredient}`)
+      axios.get(`${BASE_URL}/ingredients/${selectedIngredient}`)
         .then((response) => {
           // Handle data (dishes for the ingredient)
           setIngredientDishes(response.data.dishes);

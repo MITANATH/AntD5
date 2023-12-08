@@ -105,6 +105,9 @@ const { MongoClient } = require('mongodb');
 const path = require('path');
 const { Pool } = require('pg');
 const cors = require('cors');
+const mongo_url = require('./Config');
+const pg= require('./pgconfig')
+
 
 const app = express();
 app.use(express.json());
@@ -119,19 +122,11 @@ app.use(function (req, res, next) {
 const buildPath = path.join(__dirname, 'client', 'build');
 app.use(express.static(buildPath));
 
-const mongoUrl = 'mongodb://127.0.0.1:27017';
+const mongoUrl = mongo_url;
 //const mongoUrl = 'mongodb://mongo:27017';
 //const mongoUrl = 'mongodb://172.19.0.2:27017'
 const mongoDbName = 'Dishes';
-const pgConfig = {
-  user: 'postgres',
-  password: 'Aknayakss77',
-  host: 'localhost',
-  //host: '172.19.0.3',
-  //host: 'postgres',
-  port: 5432,
-  database: 'Dishes',
-};
+const pgConfig = pg;
 
 // MongoDB setup
 const mongoClient = new MongoClient(mongoUrl);

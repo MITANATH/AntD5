@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { BASE_URL } from "../Config"
 import axios from 'axios';
+
+
 
 const AddDishForm = () => {
   const [newDish, setNewDish] = useState({ name: '', ingredients: [] }); // Set ingredients as an empty array initially
@@ -17,7 +20,7 @@ const AddDishForm = () => {
   };
 
   const addNewDish = () => {
-    axios.post('http://localhost:8000/dishes', { dishes: newDish })
+    axios.post(`${BASE_URL}/dishes`, { dishes: newDish })
       .then((response) => {
         alert('Dish added successfully:', response.data);
       })

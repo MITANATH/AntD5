@@ -5,16 +5,7 @@ import SingleDish from './Components/SingleDish.jsx'
 import Ingredients from './Components/ Ingredients'
 
 const App = () => {
-  const bounceAnimation = {
-    '@keyframes bounce': {
-      '0%, 100%': {
-        transform: 'translateY(0)',
-      },
-      '50%': {
-        transform: 'translateY(-10px)', // Adjust the value to control the bounce height
-      },
-    },
-  };
+
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px' }}>
       <h1 style={{
